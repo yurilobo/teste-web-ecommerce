@@ -4,6 +4,8 @@ package homepage;
 import static org.hamcrest.MatcherAssert.assertThat;
 import static org.hamcrest.Matchers.is;
 
+import java.util.List;
+
 import org.junit.jupiter.api.Test;
 
 import base.BaseTests;
@@ -23,7 +25,7 @@ public class HomePageTests extends BaseTests{
 		assertThat(produtosNoCarrinho, is(0));
 	}
 	
-	String nomeProduto_ProdutoPage;
+	ProdutoPage produtoPage;
 	@Test
 	//retorno do nome do produto e do preco
 	
@@ -35,9 +37,9 @@ public class HomePageTests extends BaseTests{
 		System.out.println(nomeProduto_HomePage);
 		System.out.println(precoProduto_HomePage);
 		
-		ProdutoPage produtoPage =homePage.clicarProduto(indice);
+		produtoPage = homePage.clicarProduto(indice);
 		
-		nomeProduto_ProdutoPage = produtoPage.obterNomeProduto();
+		String nomeProduto_ProdutoPage = produtoPage.obterNomeProduto();
 		String precoProduto_ProdutoPage = produtoPage.obterPrecoProduto();
 		
 		System.out.println(nomeProduto_ProdutoPage);
@@ -48,11 +50,11 @@ public class HomePageTests extends BaseTests{
 	
 	}
 	
-	
+	LoginPage loginPage;
 	@Test
 	public void testLoginComSucesso_UsuarioLogado() {
 		//Clicar no botao sing in na home page
-		LoginPage loginPage = homePage.clicarBotaoSingIn();
+		 loginPage = homePage.clicarBotaoSingIn();
 		//Preencher usuario e login logado
 		loginPage.preencherEmail("Teste@testador.com");
 		loginPage.preencherPassword("12345");
@@ -66,6 +68,22 @@ public class HomePageTests extends BaseTests{
 		
 	}
 	
+	
+	@Test
+	public void incluirProdutoNoCarrinho_ProdutoIncluirComSucesso() {
+		//pre condição
+		if(!homePage.estaLogado("Teste testador")) {
+				testLoginComSucesso_UsuarioLogado();
+		}
+		//Teste selecionando produto
+		testValidarDetalhesDoProduto_DescricaoEValorIguais();
+		
+		//selecionar tamanho
+		List<String>listaOpcoes = produtoPage.obterOpcoesSelecionadas();
+		System.out.println(listaOpcoes.get(0));
+		System.out.println("Tamanho da lista :" + listaOpcoes.size());
+		
+	}
 	
 	
 	
