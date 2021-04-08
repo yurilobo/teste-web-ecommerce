@@ -21,5 +21,49 @@ public class HomePageTests extends BaseTests{
 		assertThat(produtosNoCarrinho, is(0));
 	}
 	
+	String nomeProduto_ProdutoPage;
+	@Test
+	//retorno do nome do produto e do preco
+	
+	public void testValidarDetalhesDoProduto_DescricaoEValorIguais() {
+		int indice = 0;
+		String nomeProduto_HomePage = homePage.obterNomeProduto(indice);
+		//String precoProduto_HomePage = homePage.obterPrecoProduto(indice);
+		
+		System.out.println(nomeProduto_HomePage);
+		//System.out.println(precoProduto_HomePage);
+		
+		
+	
+	}
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
 	
 }
