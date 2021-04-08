@@ -45,10 +45,14 @@ public class HomePage {
 		return qtdProdutosNoCarrinho;
 	}
 
-	 public String obterNomeProduto(int indice) {
+	public String obterNomeProduto(int indice) {
 		 return driver.findElements(descricoesDosProdutos).get(indice).getText();
 	 }
-	 public String obterPrecoProduto(int indice) {
+	public String obterPrecoProduto(int indice) {
 		 return driver.findElements(precoDosProdutos).get(indice).getText();
+	 }
+	public ProdutoPage clicarProduto(int indice) {
+		 driver.findElements(descricoesDosProdutos).get(indice).click();
+		 return new ProdutoPage(driver);
 	 }
 }

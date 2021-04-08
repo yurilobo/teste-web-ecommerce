@@ -7,6 +7,7 @@ import static org.hamcrest.Matchers.is;
 import org.junit.jupiter.api.Test;
 
 import base.BaseTests;
+import pages.ProdutoPage;
 
 public class HomePageTests extends BaseTests{
 	@Test
@@ -33,6 +34,16 @@ public class HomePageTests extends BaseTests{
 		System.out.println(nomeProduto_HomePage);
 		System.out.println(precoProduto_HomePage);
 		
+		ProdutoPage produtoPage =homePage.clicarProduto(indice);
+		
+		nomeProduto_ProdutoPage = produtoPage.obterNomeProduto();
+		String precoProduto_ProdutoPage = produtoPage.obterPrecoProduto();
+		
+		System.out.println(nomeProduto_ProdutoPage);
+		System.out.println(precoProduto_ProdutoPage);
+		
+		assertThat((nomeProduto_HomePage.toUpperCase()), is(nomeProduto_ProdutoPage.toUpperCase()));
+		assertThat((precoProduto_HomePage), is(precoProduto_ProdutoPage));
 		
 	
 	}
