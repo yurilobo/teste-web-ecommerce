@@ -90,6 +90,11 @@ public class HomePageTests extends BaseTests{
 		System.out.println(listaOpcoes.get(0));
 		System.out.println("Tamanho da lista :" + listaOpcoes.size());
 		
+		//selecionar cor preta
+		produtoPage.selecionarCorPreta();
+		
+		//selecionar a quantidade
+		produtoPage.alterarQuantidade(2);
 		
 	}
 	

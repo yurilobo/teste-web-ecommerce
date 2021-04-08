@@ -17,6 +17,14 @@ public class ProdutoPage {
 	
 	private By tamanhoProduto = By.id("group_1");
 	
+	private By inputCorPreta = By.xpath("//ul[@id='group_2']//input[@value = '11']");
+	
+	//private By inputCorBranca = By.xpath("//ul[@id='group_2']//input[@value = '8']");
+	
+	private By quantidadeProduto = By.id("quantity_wanted");
+	
+	//private By botaoAddToCart = By.className("add-to-cart");
+	
 	public ProdutoPage(WebDriver driver) {
 		this.driver = driver;
 	}
@@ -45,4 +53,36 @@ public class ProdutoPage {
 	public Select encontrarDropdownSize() {
 		return new Select(driver.findElement(tamanhoProduto));
 	}
+
+	public void selecionarCorPreta() {
+		driver.findElement(inputCorPreta).click();
+	}
+	//public void selecionarCorBranca() {
+	//	driver.findElement(inputCorBranca).click();	}
+	public void alterarQuantidade(int quantidade) {
+		driver.findElement(quantidadeProduto).clear();
+		driver.findElement(quantidadeProduto).sendKeys(Integer.toString(quantidade));
+	}
+	//public ModalProdutoPage clicarBotaoAddToCart() {
+		//driver.findElement(botaoAddToCart).click();
+		//return new ModalProdutoPage(driver);
+	//}
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
 }
