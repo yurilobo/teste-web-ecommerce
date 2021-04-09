@@ -3,6 +3,7 @@ package homepage;
 
 import static org.hamcrest.MatcherAssert.assertThat;
 import static org.hamcrest.Matchers.is;
+import static org.junit.jupiter.api.Assertions.assertTrue;
 
 import java.util.List;
 
@@ -10,6 +11,7 @@ import org.junit.jupiter.api.Test;
 
 import base.BaseTests;
 import pages.LoginPage;
+import pages.ModalProdutoPage;
 import pages.ProdutoPage;
 
 public class HomePageTests extends BaseTests{
@@ -96,6 +98,15 @@ public class HomePageTests extends BaseTests{
 		//selecionar a quantidade
 		produtoPage.alterarQuantidade(2);
 		
+		//adicionar carrinh
+		ModalProdutoPage modalProdutoPage =  produtoPage.clicarBotaoAddToCart();
+		
+		//com essa mensagem abaixo ele falha pois existe mais um icone alem da mensagemlogo vamos so testar se aparece a mensagem 
+		//assertThat(modalProdutoPage.obterMensagemProdutoAdicionado(), is ("Product successfully added to your shopping cart"));
+		
+		//VALIDAÇÕES//testo se o metodo termina com a mensagem produ....
+		assertTrue(modalProdutoPage.obterMensagemProdutoAdicionado().endsWith("Product successfully added to your shopping cart"));
+				
 	}
 	
 	

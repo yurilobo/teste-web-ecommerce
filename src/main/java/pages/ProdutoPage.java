@@ -23,7 +23,7 @@ public class ProdutoPage {
 	
 	private By quantidadeProduto = By.id("quantity_wanted");
 	
-	//private By botaoAddToCart = By.className("add-to-cart");
+	private By botaoAddToCart = By.className("add-to-cart");
 	
 	public ProdutoPage(WebDriver driver) {
 		this.driver = driver;
@@ -63,10 +63,10 @@ public class ProdutoPage {
 		driver.findElement(quantidadeProduto).clear();
 		driver.findElement(quantidadeProduto).sendKeys(Integer.toString(quantidade));
 	}
-	//public ModalProdutoPage clicarBotaoAddToCart() {
-		//driver.findElement(botaoAddToCart).click();
-		//return new ModalProdutoPage(driver);
-	//}
+	public ModalProdutoPage clicarBotaoAddToCart() {
+		driver.findElement(botaoAddToCart).click();
+		return new ModalProdutoPage(driver);
+	}
 	
 	
 	
