@@ -110,7 +110,12 @@ public class HomePageTests extends BaseTests{
 		
 		//VALIDAÇÕES//testo se o metodo termina com a mensagem produ....
 		assertTrue(modalProdutoPage.obterMensagemProdutoAdicionado().endsWith("Product successfully added to your shopping cart"));
-				
+			
+
+		System.out.println(modalProdutoPage.obterTamanhoProduto());
+		System.out.println(modalProdutoPage.obterCorProduto());
+		System.out.println(modalProdutoPage.obterQuantidadeProduto());
+		
 	}
 	
 	
