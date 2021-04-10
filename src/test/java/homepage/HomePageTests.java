@@ -73,6 +73,10 @@ public class HomePageTests extends BaseTests{
 	
 	@Test
 	public void incluirProdutoNoCarrinho_ProdutoIncluirComSucesso() {
+		String tamanhoProduto = "M";
+		String corProduto = "Black";
+		int quantidadeProduto = 2;
+		
 		//pre condição
 		if(!homePage.estaLogado("Teste testador")) {
 				testLoginComSucesso_UsuarioLogado();
@@ -85,7 +89,7 @@ public class HomePageTests extends BaseTests{
 		System.out.println(listaOpcoes.get(0));
 		System.out.println("Tamanho da lista :" + listaOpcoes.size());
 		
-		produtoPage.selecionarOpcaoDropdown("M");
+		produtoPage.selecionarOpcaoDropdown(tamanhoProduto);
 		
 		listaOpcoes = produtoPage.obterOpcoesSelecionadas();
 		
@@ -96,7 +100,7 @@ public class HomePageTests extends BaseTests{
 		produtoPage.selecionarCorPreta();
 		
 		//selecionar a quantidade
-		produtoPage.alterarQuantidade(2);
+		produtoPage.alterarQuantidade(quantidadeProduto);
 		
 		//adicionar carrinh
 		ModalProdutoPage modalProdutoPage =  produtoPage.clicarBotaoAddToCart();
