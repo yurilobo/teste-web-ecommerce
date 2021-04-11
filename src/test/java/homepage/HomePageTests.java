@@ -14,6 +14,7 @@ import pages.CarrinhoPage;
 import pages.LoginPage;
 import pages.ModalProdutoPage;
 import pages.ProdutoPage;
+import util.Funcoes;
 
 public class HomePageTests extends BaseTests{
 	@Test
@@ -146,11 +147,21 @@ public class HomePageTests extends BaseTests{
 		
 		
 		System.out.println(carrinhoPage.obter_nomeProduto());
-		System.out.println(carrinhoPage.obter_precoProduto());
+		System.out.println(Funcoes.removeCifraoDevolveDouble(carrinhoPage.obter_precoProduto()));
 		System.out.println(carrinhoPage.obter_tamanhoProduto());
 		System.out.println(carrinhoPage.obter_corProduto());
 		System.out.println(carrinhoPage.obter_input_quantidadeProduto());
-		System.out.println(carrinhoPage.obter_subtotalProduto());
+		System.out.println(Funcoes.removeCifraoDevolveDouble(carrinhoPage.obter_subtotalProduto()));
+		
+		System.out.println("****ITENS TOTAIS*****");
+		
+		
+		System.out.println(carrinhoPage.obter_numeroItensTotal());
+		System.out.println(Funcoes.removeCifraoDevolveDouble(carrinhoPage.obter_subtotalTotal()));
+		System.out.println(Funcoes.removeCifraoDevolveDouble(carrinhoPage.obter_shippingTotal()));
+		System.out.println(Funcoes.removeCifraoDevolveDouble(carrinhoPage.obter_totalTaxExclTotal()));
+		System.out.println(Funcoes.removeCifraoDevolveDouble(carrinhoPage.obter_totalTaxIncTotal()));
+		System.out.println(Funcoes.removeCifraoDevolveDouble(carrinhoPage.obter_taxesTotal()));
 		
 	}
 	
