@@ -10,6 +10,7 @@ import java.util.List;
 import org.junit.jupiter.api.Test;
 
 import base.BaseTests;
+import pages.CarrinhoPage;
 import pages.LoginPage;
 import pages.ModalProdutoPage;
 import pages.ProdutoPage;
@@ -71,7 +72,7 @@ public class HomePageTests extends BaseTests{
 		
 	}
 	
-	
+	ModalProdutoPage modalProdutoPage;
 	@Test
 	public void incluirProdutoNoCarrinho_ProdutoIncluirComSucesso() {
 		String tamanhoProduto = "M";
@@ -104,7 +105,7 @@ public class HomePageTests extends BaseTests{
 		produtoPage.alterarQuantidade(quantidadeProduto);
 		
 		//adicionar carrinh
-		ModalProdutoPage modalProdutoPage =  produtoPage.clicarBotaoAddToCart();
+		modalProdutoPage =  produtoPage.clicarBotaoAddToCart();
 		
 		//com essa mensagem abaixo ele falha pois existe mais um icone alem da mensagemlogo vamos so testar se aparece a mensagem 
 		//assertThat(modalProdutoPage.obterMensagemProdutoAdicionado(), is ("Product successfully added to your shopping cart"));
@@ -132,6 +133,15 @@ public class HomePageTests extends BaseTests{
 		assertThat(subTotal, is(subtotalCalculado));
 	}
 	
+	@Test
+	public void IrParaCarrinho_InformacoesPersistidas() {
+		//Pré-condições
+		//Produto incluido na tela ModalProduto
+		incluirProdutoNoCarrinho_ProdutoIncluirComSucesso();
+		
+		CarrinhoPage carrinhoPage = modalProdutoPage.clicarBotaoProceedToCheckout();
+		
+	}
 	
 	
 	

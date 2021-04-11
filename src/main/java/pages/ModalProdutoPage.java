@@ -23,6 +23,8 @@ public class ModalProdutoPage {
 	
 	private By subtotal = By.cssSelector(".cart-content p:nth-child(2) span.value");
 	
+	private By botaoProveedToCheckout = By.cssSelector("div.cart-content-btn a.btn-primary");
+	
 	public ModalProdutoPage(WebDriver driver) {
 		this.driver =driver;
 	}
@@ -53,4 +55,9 @@ public class ModalProdutoPage {
 	public String obterSubtotal() {
 		return driver.findElement(subtotal).getText();
 	}
+	public CarrinhoPage clicarBotaoProceedToCheckout() {
+		driver.findElement(botaoProveedToCheckout).click();
+		return new CarrinhoPage(driver);
+	}
+	
 }
