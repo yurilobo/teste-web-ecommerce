@@ -141,6 +141,17 @@ public class HomePageTests extends BaseTests{
 		
 		CarrinhoPage carrinhoPage = modalProdutoPage.clicarBotaoProceedToCheckout();
 		
+		//Teste  --- validar os elementos da tela
+		System.out.println("****TELA DO CARRINHO*****");
+		
+		
+		System.out.println(carrinhoPage.obter_nomeProduto());
+		System.out.println(carrinhoPage.obter_precoProduto());
+		System.out.println(carrinhoPage.obter_tamanhoProduto());
+		System.out.println(carrinhoPage.obter_corProduto());
+		System.out.println(carrinhoPage.obter_input_quantidadeProduto());
+		System.out.println(carrinhoPage.obter_subtotalProduto());
+		
 	}
 	
 	
