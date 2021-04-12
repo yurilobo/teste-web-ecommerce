@@ -5,4 +5,8 @@ public class Funcoes {
 		texto = texto.replace("$", "");
 		return Double.parseDouble(texto);
 	}
+	public static int removeTextoItemsDevolveInt(String texto) {
+		texto=texto.replace(" items", "");
+		return Integer.parseInt(texto);
+	}
 }
