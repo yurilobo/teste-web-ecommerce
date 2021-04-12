@@ -150,6 +150,7 @@ public class HomePageTests extends BaseTests{
 	Double esperado_totalTaxIncTotal = esperado_totalTaxExclTotal;
 	Double esperado_taxesTotal = 00.00;
  	
+	String esperado_nomeCliente = "Teste testador";
 	
 	CarrinhoPage carrinhoPage;
 	@Test
@@ -223,7 +224,10 @@ public class HomePageTests extends BaseTests{
 		
 		//validar informacoes na tela
 		assertThat(Funcoes.removeCifraoDevolveDouble(checkoutPage.obter_totalTaxIncTotal()),is(esperado_totalTaxIncTotal));
+		//assertThat(checkoutPage.obter_nomeCliente(),is(esperado_nomeCliente));
+		assertTrue(checkoutPage.obter_nomeCliente().startsWith(esperado_nomeCliente));
 		
+		checkoutPage.clicarBotaoContinueAddress();
 		
 	}
 	

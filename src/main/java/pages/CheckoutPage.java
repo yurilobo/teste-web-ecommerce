@@ -8,7 +8,9 @@ public class CheckoutPage {
 	
 	private By totalTaxIncTotal = By.cssSelector("div.cart-total span.value");
 			
-	//private By totalTaxExclTotal = By.cssSelector
+	private By nomeCliente = By.cssSelector("div.address");
+	
+	private By botaoContinueAddress = By.name("confirm-addresses");
 	
 	public CheckoutPage(WebDriver driver) {
 		this.driver =driver;
@@ -17,4 +19,15 @@ public class CheckoutPage {
 	public String obter_totalTaxIncTotal() {
 		return driver.findElement(totalTaxIncTotal).getText();
 	}
+	public String obter_nomeCliente() {
+		return driver.findElement(nomeCliente).getText();
+	}
+	public void clicarBotaoContinueAddress() {
+		driver.findElement(botaoContinueAddress).click();
+	}
+	
+	
+	
+	
+	
 }
