@@ -12,6 +12,8 @@ public class CheckoutPage {
 	
 	private By botaoContinueAddress = By.name("confirm-addresses");
 	
+	private By shippingValor = By.cssSelector("span.carrier-price");
+	
 	public CheckoutPage(WebDriver driver) {
 		this.driver =driver;
 	}
@@ -24,6 +26,9 @@ public class CheckoutPage {
 	}
 	public void clicarBotaoContinueAddress() {
 		driver.findElement(botaoContinueAddress).click();
+	}
+	public String obter_shippingValor() {
+		return driver.findElement(shippingValor).getText();
 	}
 	
 	

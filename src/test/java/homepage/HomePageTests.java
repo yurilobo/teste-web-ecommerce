@@ -229,6 +229,11 @@ public class HomePageTests extends BaseTests{
 		
 		checkoutPage.clicarBotaoContinueAddress();
 		
+		String encontrado_shippingValor =checkoutPage.obter_shippingValor();
+		encontrado_shippingValor =Funcoes.removeTexto(encontrado_shippingValor, " tax excl.");
+		Double encontrado_shippingValor_Double = Funcoes.removeCifraoDevolveDouble(encontrado_shippingValor);
+		
+		assertThat(encontrado_shippingValor_Double,is(esperado_shippingTotal));
 	}
 	
 	
