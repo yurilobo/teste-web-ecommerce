@@ -234,6 +234,23 @@ public class HomePageTests extends BaseTests{
 		Double encontrado_shippingValor_Double = Funcoes.removeCifraoDevolveDouble(encontrado_shippingValor);
 		
 		assertThat(encontrado_shippingValor_Double,is(esperado_shippingTotal));
+		
+		checkoutPage.clicarBotaoContinueShipping();
+		
+		//Selecionar opção PayBy check
+		checkoutPage.selecionarRadioPlayByCheck();
+		
+		//Validar valor do cheque (amount)
+		String encontrado_amountPayByCheck =checkoutPage.obter_amountPayByCheck();
+		encontrado_amountPayByCheck =Funcoes.removeTexto(encontrado_amountPayByCheck , " (tax incl.)");
+		Double encontrado_amountPayByCheck_Double = Funcoes.removeCifraoDevolveDouble(encontrado_amountPayByCheck );
+		
+		assertThat(encontrado_amountPayByCheck_Double,is(esperado_totalTaxIncTotal));
+		
+		//Clicar na opção "I agree"
+		checkoutPage.selecionarCheckboxIAgree();
+		
+		assertTrue(checkoutPage.estaSelecionadoCheckboxIAgree());
 	}
 	
 	
