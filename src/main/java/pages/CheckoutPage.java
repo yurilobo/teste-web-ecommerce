@@ -18,7 +18,7 @@ public class CheckoutPage {
 	
 	private By radioPayByCheck = By.id("payment-option-1");
 	
-	private By amountPayByCheck = By.cssSelector("#payment-opition-1-additional-information > section > dl > dd:nth:child(2)");
+	private By amountPayByCheck = By.cssSelector("#payment-option-1-additional-information > section > dl > dd:nth-child(2)");
 	
 	private By checkboxIAgree = By.id("conditions_to_approve[terms-and-conditions]");
 	
