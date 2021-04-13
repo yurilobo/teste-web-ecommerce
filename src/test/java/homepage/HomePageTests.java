@@ -264,35 +264,20 @@ public class HomePageTests extends BaseTests{
 		//Teste
 		//Clicar no botao para confirmar pedido
 		PedidoPage pedidoPage = checkoutPage.clicaBotaoConfirmaPedido();
+		
+		
 		//Validar valores da tela
 		assertTrue(pedidoPage.obter_textoPedidoConfirmado().endsWith("YOUR ORDER IS CONFIRMED"));
 		//assertThat(pedidoPage.obter_textoPedidoConfirmado().toUpperCase(),is("YOUR ORDER IS CONFIRMED"));
+		assertThat(pedidoPage.obter_email(),is("Teste@testador.com"));
+		
+		assertThat(pedidoPage.obter_totalProdutos(),is(esperado_subtotalProduto));
+		
+		assertThat(pedidoPage.obter_totalTaxIncl(),is(esperado_totalTaxIncTotal));
+		
+		assertThat(pedidoPage.obter_metodoPagamento(),is("check"));
 		
 	}
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
 	
 	
 }
