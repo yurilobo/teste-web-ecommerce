@@ -8,6 +8,8 @@ import static org.junit.jupiter.api.Assertions.assertTrue;
 import java.util.List;
 
 import org.junit.jupiter.api.Test;
+import org.junit.jupiter.params.ParameterizedTest;
+import org.junit.jupiter.params.provider.CsvFileSource;
 
 import base.BaseTests;
 import pages.CarrinhoPage;
@@ -57,16 +59,18 @@ public class HomePageTests extends BaseTests{
 	
 	}
 	
+	
+	
 	LoginPage loginPage;
 	@Test
 	public void testLoginComSucesso_UsuarioLogado() {
 		//Clicar no botao sing in na home page
-		 loginPage = homePage.clicarBotaoSingIn();
+		 loginPage = homePage.clicarBotaoSignIn();
 		//Preencher usuario e login logado
 		loginPage.preencherEmail("Teste@testador.com");
 		loginPage.preencherPassword("12345");
 		//Clicar no botão Sing In para logar
-		loginPage.clicarBotaoSingIn();
+		loginPage.clicarBotaoSignIn();;
 		//validar se o usuario está logado de fato
 		assertThat(homePage.estaLogado("Teste testador"), is(true));
 		
@@ -74,6 +78,7 @@ public class HomePageTests extends BaseTests{
 		carregarPaginaInicial();
 		
 	}
+	
 	
 	ModalProdutoPage modalProdutoPage;
 	@Test

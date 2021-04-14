@@ -1,0 +1,3 @@
+nomeTeste;email;password;nomeUsuario;resultado
+loginValido;Teste@testador.com;12345;Teste testador;positivo
+loginInvalido;Teste@testador.com;54321;Teste testador;negativo

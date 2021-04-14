@@ -20,7 +20,7 @@ public class LoginPage {
 	public void preencherPassword(String texto) {
 		driver.findElement(password).sendKeys(texto);
 	}
-	public void clicarBotaoSingIn() {
+	public void clicarBotaoSignIn() {
 		driver.findElement(botaoSignIn).click();
 	}
 }
