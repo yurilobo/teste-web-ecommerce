@@ -78,6 +78,34 @@ public class HomePageTests extends BaseTests{
 		carregarPaginaInicial();
 		
 	}
+	@ParameterizedTest
+	@CsvFileSource(resources = "/massaTeste_Login.csv", numLinesToSkip = 1, delimiter = ';')
+	public void testLogin_UsuarioLogadoComDadosValidos(String nomeTeste, String email, 
+			String password, String nomeUsuario, String resultado) {
+		//Clicar no botao sing in na home page
+		 loginPage = homePage.clicarBotaoSignIn();
+		//Preencher usuario e login logado
+		loginPage.preencherEmail(email);
+		loginPage.preencherPassword(password);
+		//Clicar no botão Sing In para logar
+		loginPage.clicarBotaoSignIn();;
+		
+		boolean esperado_loginOk;
+		if(resultado.equals("positivo"))
+			esperado_loginOk = true;
+		else
+			esperado_loginOk = false;
+		
+		
+		//validar se o usuario está logado de fato
+		assertThat(homePage.estaLogado(nomeUsuario), is(esperado_loginOk));
+		
+		if(esperado_loginOk)
+			homePage.clicarBotaoSignOut();
+		
+		//voltar a pagina inicial
+		carregarPaginaInicial();
+	}
 	
 	
 	ModalProdutoPage modalProdutoPage;
