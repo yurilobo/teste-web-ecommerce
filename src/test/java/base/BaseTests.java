@@ -1,12 +1,18 @@
 package base;
 
-import java.util.concurrent.TimeUnit;
+import java.io.File;
+import java.io.IOException;
+
 
 import org.junit.jupiter.api.AfterAll;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.BeforeEach;
+import org.openqa.selenium.OutputType;
+import org.openqa.selenium.TakesScreenshot;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
+
+import com.google.common.io.Files;
 
 import pages.HomePage;
 
@@ -26,6 +32,17 @@ public class BaseTests {
 		driver.get("https://marcelodebittencourt.com/demoprestashop/");
 		homePage =new HomePage(driver);
 	}
+	
+	public void capturarTela(String nomeTeste, String resultado) {
+		var camera = (TakesScreenshot)driver;
+		File capturaDetela =camera.getScreenshotAs(OutputType.FILE);
+		try {
+			Files.move(capturaDetela, new File("resources/screenshots/" + nomeTeste + "_" + resultado + ".png"));
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+	}
+	
 	
 	@AfterAll
 	public static void finalizar() {

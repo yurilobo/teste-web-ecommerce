@@ -100,6 +100,8 @@ public class HomePageTests extends BaseTests{
 		//validar se o usuario está logado de fato
 		assertThat(homePage.estaLogado(nomeUsuario), is(esperado_loginOk));
 		
+		capturarTela(nomeTeste, resultado);
+		
 		if(esperado_loginOk)
 			homePage.clicarBotaoSignOut();
 		
