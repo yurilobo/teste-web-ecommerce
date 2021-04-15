@@ -46,8 +46,7 @@ public class VisualizaProdutosSteps {
 
 	@Entao("carrinho esta zerado")
 	public void carrinho_esta_zerado() {
-	    // Write code here that turns the phrase above into concrete actions
-	    throw new io.cucumber.java.PendingException();
+		assertThat(homePage.obterQuantidadeProdutosNoCarrinho(), is(0));
 	}
 	@After
 	public static void finalizar() {
