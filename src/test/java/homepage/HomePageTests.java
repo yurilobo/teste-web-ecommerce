@@ -69,9 +69,9 @@ public class HomePageTests extends BaseTests{
 		//Preencher usuario e login logado
 		loginPage.preencherEmail("Teste@testador.com");
 		loginPage.preencherPassword("12345");
-		//Clicar no botão Sing In para logar
-		loginPage.clicarBotaoSignIn();;
-		//validar se o usuario está logado de fato
+		//Clicar no botï¿½o Sing In para logar
+		loginPage.clicarBotaoSignIn();
+		//validar se o usuario esta logado de fato
 		assertThat(homePage.estaLogado("Teste testador"), is(true));
 		
 		//voltar a pagina inicial
@@ -87,7 +87,7 @@ public class HomePageTests extends BaseTests{
 		//Preencher usuario e login logado
 		loginPage.preencherEmail(email);
 		loginPage.preencherPassword(password);
-		//Clicar no botão Sing In para logar
+		//Clicar no botï¿½o Sing In para logar
 		loginPage.clicarBotaoSignIn();;
 		
 		boolean esperado_loginOk;
@@ -97,7 +97,7 @@ public class HomePageTests extends BaseTests{
 			esperado_loginOk = false;
 		
 		
-		//validar se o usuario está logado de fato
+		//validar se o usuario estï¿½ logado de fato
 		assertThat(homePage.estaLogado(nomeUsuario), is(esperado_loginOk));
 		
 		capturarTela(nomeTeste, resultado);
@@ -117,7 +117,7 @@ public class HomePageTests extends BaseTests{
 		String corProduto = "Black";
 		int quantidadeProduto = 2;
 		
-		//pre condição
+		//pre condiï¿½ï¿½o
 		if(!homePage.estaLogado("Teste testador")) {
 				testLoginComSucesso_UsuarioLogado();
 		}
@@ -148,7 +148,7 @@ public class HomePageTests extends BaseTests{
 		//com essa mensagem abaixo ele falha pois existe mais um icone alem da mensagemlogo vamos so testar se aparece a mensagem 
 		//assertThat(modalProdutoPage.obterMensagemProdutoAdicionado(), is ("Product successfully added to your shopping cart"));
 		
-		//VALIDAÇÕES//testo se o metodo termina com a mensagem produ....
+		//VALIDAï¿½ï¿½ES//testo se o metodo termina com a mensagem produ....
 		assertTrue(modalProdutoPage.obterMensagemProdutoAdicionado().endsWith("Product successfully added to your shopping cart"));
 			
 		
@@ -191,7 +191,7 @@ public class HomePageTests extends BaseTests{
 	CarrinhoPage carrinhoPage;
 	@Test
 	public void testIrParaCarrinho_InformacoesPersistidas() {
-		//Pré-condições
+		//Prï¿½-condiï¿½ï¿½es
 		//Produto incluido na tela ModalProduto
 		testincluirProdutoNoCarrinho_ProdutoIncluirComSucesso();
 		
@@ -219,7 +219,7 @@ public class HomePageTests extends BaseTests{
 		System.out.println(Funcoes.removeCifraoDevolveDouble(carrinhoPage.obter_taxesTotal()));
 		
 		
-		//ASSERÇOES HAMCREST
+		//ASSERï¿½OES HAMCREST
 		
 		assertThat(carrinhoPage.obter_nomeProduto(),is(esperado_nomeProduto));
 		assertThat(Funcoes.removeCifraoDevolveDouble(carrinhoPage.obter_precoProduto()),is(esperado_precoProduto));
@@ -236,7 +236,7 @@ public class HomePageTests extends BaseTests{
 		assertThat(Funcoes.removeCifraoDevolveDouble(carrinhoPage.obter_taxesTotal()),is(esperado_taxesTotal));
 		
 		
-		//ASSERÇOES JUNIT
+		//ASSERï¿½OES JUNIT
 	
 		
 	}
@@ -245,9 +245,9 @@ public class HomePageTests extends BaseTests{
 	
 	@Test
 	public void testIrParaCheckout_FreteMeioPagamentoEnderecoListadosOk() {
-		//Pré-condições
+		//Prï¿½-condiï¿½ï¿½es
 		
-		//Produto disponível no carrinho de compras
+		//Produto disponï¿½vel no carrinho de compras
 		testIrParaCarrinho_InformacoesPersistidas();
 		
 		//Teste
@@ -273,7 +273,7 @@ public class HomePageTests extends BaseTests{
 		
 		checkoutPage.clicarBotaoContinueShipping();
 		
-		//Selecionar opção PayBy check
+		//Selecionar opï¿½ï¿½o PayBy check
 		checkoutPage.selecionarRadioPlayByCheck();
 		
 		//Validar valor do cheque (amount)
@@ -283,7 +283,7 @@ public class HomePageTests extends BaseTests{
 		
 		assertThat(encontrado_amountPayByCheck_Double,is(esperado_totalTaxIncTotal));
 		
-		//Clicar na opção "I agree"
+		//Clicar na opï¿½ï¿½o "I agree"
 		checkoutPage.selecionarCheckboxIAgree();
 		
 		assertTrue(checkoutPage.estaSelecionadoCheckboxIAgree());
@@ -292,7 +292,7 @@ public class HomePageTests extends BaseTests{
 	
 	@Test 
 	public void testfinalizarPedido_pedidoFinalizadoComsucesso() {
-		//Pré-condições
+		//Prï¿½-condiï¿½ï¿½es
 		//Checkout completamente concluido
 		testIrParaCheckout_FreteMeioPagamentoEnderecoListadosOk();
 		

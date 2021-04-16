@@ -1,10 +1,10 @@
 package steps;
 
-import java.util.concurrent.TimeUnit;
 import static org.hamcrest.MatcherAssert.assertThat;
 import static org.hamcrest.Matchers.is;
 
-import org.junit.jupiter.api.AfterAll;
+import java.util.concurrent.TimeUnit;
+
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 
@@ -14,6 +14,8 @@ import io.cucumber.java.pt.Dado;
 import io.cucumber.java.pt.Entao;
 import io.cucumber.java.pt.Quando;
 import pages.HomePage;
+import pages.LoginPage;
+import pages.ProdutoPage;
 
 public class ComprarProdutoSteps {
 	
@@ -49,29 +51,56 @@ public class ComprarProdutoSteps {
 		assertThat(homePage.obterQuantidadeProdutosNoCarrinho(), is(0));
 	}
 	
-	
+	LoginPage loginPage;
 	@Quando("estou logado")
 	public void estou_logado() {
-	    // Write code here that turns the phrase above into concrete actions
-	    throw new io.cucumber.java.PendingException();
+		//Clicar no botao sing in na home page
+		 loginPage = homePage.clicarBotaoSignIn();
+		 
+		//Preencher usuario e login logado
+		loginPage.preencherEmail("Teste@testador.com");
+		loginPage.preencherPassword("12345");
+		
+		//Clicar no botao Sing In para logar
+		loginPage.clicarBotaoSignIn();
+		
+		//validar se o usuario esta logado de fato
+		assertThat(homePage.estaLogado("Teste testador"), is(true));
+		
+		//voltar a pagina inicial
+		homePage.carregarPaginaInicial();
 	}
-
+	String nomeProduto_HomePage;
+	String precoProduto_HomePage;
+	String nomeProduto_ProdutoPage;
+	String precoProduto_ProdutoPage;
+	ProdutoPage produtoPage;
 	@Quando("seleciono um produto na posicao {int}")
-	public void seleciono_um_produto_na_posicao(Integer int1) {
-	    // Write code here that turns the phrase above into concrete actions
-	    throw new io.cucumber.java.PendingException();
+	public void seleciono_um_produto_na_posicao(Integer indice) {
+		nomeProduto_HomePage = homePage.obterNomeProduto(indice);
+		precoProduto_HomePage = homePage.obterPrecoProduto(indice);
+		
+		System.out.println(nomeProduto_HomePage);
+		System.out.println(precoProduto_HomePage);
+		
+		produtoPage = homePage.clicarProduto(indice);
+		
+		nomeProduto_ProdutoPage = produtoPage.obterNomeProduto();
+		precoProduto_ProdutoPage = produtoPage.obterPrecoProduto();
+		
 	}
 
-	@Quando("nome do produto na tela principla eh {string}")
-	public void nome_do_produto_na_tela_principla_eh(String string) {
-	    // Write code here that turns the phrase above into concrete actions
-	    throw new io.cucumber.java.PendingException();
+	@Quando("nome do produto na tela principal e na tela produto eh {string}")
+	public void nome_do_produto_na_tela_principla_eh(String nomeProduto) {
+		assertThat(nomeProduto_HomePage.toUpperCase() , is(nomeProduto.toUpperCase())); 
+		assertThat(nomeProduto_ProdutoPage.toUpperCase() , is(nomeProduto.toUpperCase()));
+			
 	}
 
-	@Quando("preco do produto na tela principla eh {string}")
-	public void preco_do_produto_na_tela_principla_eh(String string) {
-	    // Write code here that turns the phrase above into concrete actions
-	    throw new io.cucumber.java.PendingException();
+	@Quando("preco do produto na tela principal e na tela produto eh {string}")
+	public void preco_do_produto_na_tela_principla_eh(String precoProduto) {
+		assertThat(precoProduto_HomePage.toUpperCase() , is(precoProduto.toUpperCase())); 
+		assertThat(precoProduto_ProdutoPage.toUpperCase() , is(precoProduto.toUpperCase()));
 	}
 
 	@Quando("adiciono o produto no carrrinho com tamanho {string} cor {string} e quantidade {int}")
