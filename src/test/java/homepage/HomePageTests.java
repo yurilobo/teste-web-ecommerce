@@ -112,7 +112,7 @@ public class HomePageTests extends BaseTests{
 	
 	ModalProdutoPage modalProdutoPage;
 	@Test
-	public void testincluirProdutoNoCarrinho_ProdutoIncluirComSucesso() {
+	public void testIncluirProdutoNoCarrinho_ProdutoIncluirComSucesso() {
 		String tamanhoProduto = "M";
 		String corProduto = "Black";
 		int quantidadeProduto = 2;
@@ -193,7 +193,7 @@ public class HomePageTests extends BaseTests{
 	public void testIrParaCarrinho_InformacoesPersistidas() {
 		//Pr�-condi��es
 		//Produto incluido na tela ModalProduto
-		testincluirProdutoNoCarrinho_ProdutoIncluirComSucesso();
+		testIncluirProdutoNoCarrinho_ProdutoIncluirComSucesso();
 		
 		carrinhoPage = modalProdutoPage.clicarBotaoProceedToCheckout();
 		
@@ -283,7 +283,7 @@ public class HomePageTests extends BaseTests{
 		
 		assertThat(encontrado_amountPayByCheck_Double,is(esperado_totalTaxIncTotal));
 		
-		//Clicar na op��o "I agree"
+		//Clicar na opcoes "I agree"
 		checkoutPage.selecionarCheckboxIAgree();
 		
 		assertTrue(checkoutPage.estaSelecionadoCheckboxIAgree());
@@ -291,7 +291,7 @@ public class HomePageTests extends BaseTests{
 	
 	
 	@Test 
-	public void testfinalizarPedido_pedidoFinalizadoComsucesso() {
+	public void testFinalizarPedido_pedidoFinalizadoComsucesso() {
 		//Pr�-condi��es
 		//Checkout completamente concluido
 		testIrParaCheckout_FreteMeioPagamentoEnderecoListadosOk();
